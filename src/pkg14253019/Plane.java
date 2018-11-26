@@ -3,10 +3,10 @@ package pkg14253019;
 import java.awt.Point;
 
 /**
- *
+ * Shared resource Plane.
  * @author cagataycali
  */
-public class Plane extends Thread {
+public class Plane {
     
     public Integer life;
     public Integer x;
@@ -24,11 +24,4 @@ public class Plane extends Thread {
         Coordinate.setLocation(++x, ++y);
         System.out.println("x " + x + " y " + y);
     }
-    
-     @Override
-    public void run () {
-        while(life > 0 && x != 9){
-            move();
-        }
-    }    
 }

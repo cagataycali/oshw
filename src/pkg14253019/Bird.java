@@ -4,24 +4,20 @@ import java.awt.Point;
 import java.util.Random;
 
 /**
- *
+ * Shared resource Bird.
  * @author cagataycali
  */
-public class Bird extends Thread {
-    public Integer id;
-    public Integer life;
-    public Integer x;
-    public Integer y;
-    public Random getCoordinate;
-    public final Point Coordinate;
+public class Bird {
+    public int id;
+    public int life;
+    public Random getCoordinate = null;
+    public Point Coordinate = new Point();
     
-    public Bird(Integer id) {
+    public Bird(int id) {
         this.id = id;
         life = 1;
         getCoordinate = new Random();
-        x = getCoordinate.nextInt(10);
-        y = getCoordinate.nextInt(10);
-        Coordinate = new Point(x, y);
+        Coordinate = new Point(getCoordinate.nextInt(11), getCoordinate.nextInt(11));
     }
     
     public void die () {
@@ -30,21 +26,10 @@ public class Bird extends Thread {
     }
     
     public void move () {
-        this.x += (getCoordinate.nextInt(5) - 2);
-        this.y += (getCoordinate.nextInt(5) - 2);
-        this.x = this.x % 9;
-        this.y = this.y % 9;
-        Coordinate.setLocation(x, y);
-        System.out.println("x " + x +" y " + y);
-    }
-    
-    @Override
-    public void run() {
-        int i = 0;
-        while(life > 0 && i != 9){
-            move();
-            i++;
-        }
-    }
-    
+        Coordinate.x += (getCoordinate.nextInt(5) - 2);
+        Coordinate.y += (getCoordinate.nextInt(5) - 2);
+        Coordinate.x = Coordinate.x < 0 ? 0 : Coordinate.x;
+        Coordinate.y = Coordinate.y < 0 ? 0 : Coordinate.y;
+        System.out.println("x " + Coordinate.x + " y " + Coordinate.y + " id " + this.id);
+    }    
 }
