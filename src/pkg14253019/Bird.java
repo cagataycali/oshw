@@ -21,7 +21,7 @@ public class Bird {
         System.out.println("Bird " + this.id + " is dead.");
     }
 	public boolean isAlive () {
-		return life!=0;
+		return life >0;
 	}
     public void move () {
 		if(isAlive()){

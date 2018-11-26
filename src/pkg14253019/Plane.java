@@ -19,7 +19,7 @@ public class Plane {
 	}
 
 	public boolean isAlive () {
-		return life != 0;
+		return life > 0;
 	}
 
 	public void move () {

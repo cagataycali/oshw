@@ -10,7 +10,7 @@ public class Main {
 	public static Random getCoordinate = new Random();
 
 	public static void main(String[] args) {
-		int birdCount = 50;
+		int birdCount = 20;
 		Semaphore sem = new Semaphore(birdCount + 1);
 		Bird[] bird = new Bird[birdCount];
 		boolean flag = true;
