@@ -3,33 +3,33 @@ package pkg14253019;
 import java.awt.Point;
 import java.util.Random;
 
-/**
- * Shared resource Bird.
- * @author cagataycali
- */
 public class Bird {
     public int id;
     public int life;
-    public Random getCoordinate = null;
-    public Point Coordinate = new Point();
+    public Random getCoordinate;
+    public Point Coordinate;
     
-    public Bird(int id) {
+    public Bird (int id) {
         this.id = id;
         life = 1;
         getCoordinate = new Random();
         Coordinate = new Point(getCoordinate.nextInt(11), getCoordinate.nextInt(11));
     }
     
-    public void die () {
+    public void kill () {
         --this.life;
-        System.out.println("Die." + this.id);
+        System.out.println("Bird " + this.id + " is dead.");
     }
-    
+	public boolean isAlive () {
+		return life!=0;
+	}
     public void move () {
+		if(isAlive()){
         Coordinate.x += (getCoordinate.nextInt(5) - 2);
         Coordinate.y += (getCoordinate.nextInt(5) - 2);
-        Coordinate.x = Coordinate.x < 0 ? 0 : Coordinate.x;
-        Coordinate.y = Coordinate.y < 0 ? 0 : Coordinate.y;
-        System.out.println("x " + Coordinate.x + " y " + Coordinate.y + " id " + this.id);
-    }    
+        Coordinate.x = Coordinate.x < 0 ? 0 : Coordinate.x%10;
+        Coordinate.y = Coordinate.y < 0 ? 0 : Coordinate.y%10;
+        System.out.println(this.id+".Bird Coordinates {x " + Coordinate.x + ", y: " + Coordinate.y + "}");
+    }
+	}
 }
